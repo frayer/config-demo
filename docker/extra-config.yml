@@ -1,0 +1,5 @@
+# --spring.config.additional-location=classpath:/extra-config.yml
+
+endpoint-configs:
+  resource-a: http://some-endpoint.io/resource-a-updated
+  resource-b: http://some-endpoint.io/resource-b-updated

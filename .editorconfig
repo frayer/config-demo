@@ -1,0 +1,10 @@
+root = true
+
+[*]
+indent_style = space
+tab_width = 2
+end_of_line = cr
+insert_final_newline = true
+
+[*.java]
+tab_width = 4

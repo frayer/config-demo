@@ -1,0 +1,21 @@
+version: "3.6"
+services:
+  config-demo:
+    image: config-demo:latest
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 1
+        delay: 2s
+        order: start-first
+    ports:
+      - target: 8080
+        published: 8080
+    command: --spring.config.additional-location=file:/extra-config.yml
+    configs:
+      - source: extra_config
+        target: /extra-config.yml
+        mode:   0440
+configs:
+  extra_config:
+    external: true
