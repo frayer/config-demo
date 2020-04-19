@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: spring-boot-config-demo
+  name: spring-boot-config-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: spring-boot-config-demo
+  template:
+    metadata:
+      labels:
+        run: spring-boot-config-demo
+    spec:
+      containers:
+      - image: frayer/spring-boot-config-demo
+        name: spring-boot-config-demo
+        args:
+        - "--spring.config.additional-location=file:/usr/config/extra-config.yaml"
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        volumeMounts:
+          - name: config
+            mountPath: /usr/config
+            readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: config-files

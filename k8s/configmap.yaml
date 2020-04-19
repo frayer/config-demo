@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-files
+data:
+  extra-config.yaml: |
+    endpoint-configs:
+      resource-a: http://some-endpoint.io/resource-a-updated
+      resource-b: http://some-endpoint.io/resource-b-updated
